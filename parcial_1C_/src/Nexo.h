@@ -8,16 +8,20 @@
 #include "eClubDeFutbol.h"
 #include "eLiga.h"
 
-/// @param listaDeRepetidas
-/// @param sizeDeRepetidas
+/// @param int[] un array de figuritas
+/// @param int el tamaño del array de Figuritas
 /// @param eFiguritas[] el array de eFiguritas
 /// @param int el tamaño del array de eFiguritas
 /// @param eEquipo[] el array de eEquipo
 /// @param int el tamaño del array de eEquipo
 /// @param eAlbum* el puntero al album
 /// @param eColeccionista* el puntero al coleccionista
-/// @param listaDeligas
-/// @param sizeDeLigas
+/// @param eLiga[] el array de ligas
+/// @param int el tamaño del array de ligas
+/// @param eClubDeFutbol[] el array de Club de futbol
+/// @param int el tamaño del array de Club de futbol
+ /// @param eAuxiliar[]  un array auxiliar
+/// @param sizeAuxiliar  el tamanio del  array auxiliar
 
 /// @fn int SubMenuAdministrador(eFiguritas[], int, eEquipo[], int)
 /// @brief Mustra el submenu De coleccionista y le permite al usuario ingresar una opcion
@@ -88,99 +92,61 @@ int CantidadDeFiguritasPegadasPorCadaClubs(eClubDeFutbol listaDeClubs[],int size
 int ContarFiguritasPegadasDeUnClub(eFiguritas listaDeFiguritas[],int sizeDeLista,int arrayDeFiguritas[],int sizeDeFiguritas,int idDeClub);
 
 /// @fn int MostrarPorcentajeDeFigutiasPegadasPorCadaClubs(eFiguritas[], int, eEquipo[], int, eClubDeFutbol[], int, eLiga[], int, eAlbum*, eAuxiliar[], int)
-/// @brief
+/// @brief Mustra el porcentaje de figuritas que hay en el album por cada  clubs
 ///
-/// @param listaDeFiguritas
-/// @param sizeDeLista
-/// @param listaDeEquipos
-/// @param sizeEquipos
-/// @param listaDeClubs
-/// @param sizeDeClubs
-/// @param listaDeligas
-/// @param sizeDeLigas
-/// @param unAlbumDeFiguritas
-/// @param arrayAuxiliar
-/// @param sizeAuxiliar
-/// @return
+/// @return [-1] si hubo error en los parametos o si la lista esta vacia,[1] si esta ok
 int MostrarPorcentajeDeFigutiasPegadasPorCadaClubs(eFiguritas listaDeFiguritas[],int sizeDeLista,eEquipo listaDeEquipos[],int sizeEquipos,eClubDeFutbol listaDeClubs[],int sizeDeClubs,eLiga listaDeligas[],int sizeDeLigas,eAlbum* unAlbumDeFiguritas ,eAuxiliar arrayAuxiliar[],int sizeAuxiliar);
 
 
 /// @fn int MostrarUnFiguritaPegadaDeUnClub(eFiguritas[], int, eEquipo[], int, eLiga[], int, eAlbum*, eClubDeFutbol)
-/// @brief
+/// @brief Muestra las figuritas pegadas en el album de un club determinado
 ///
-/// @param listaDeFiguritas
-/// @param sizeDeLista
-/// @param listaDeEquipos
-/// @param sizeEquipos
-/// @param listaDeligas
-/// @param sizeDeLigas
-/// @param unAlbumDeFiguritas
-/// @param unClubDeFutbol
-/// @return
+/// @return [-1] si hubo error en los parametos o si la lista esta vacia,[1] si esta ok
 int MostrarUnFiguritaPegadaDeUnClub(eFiguritas listaDeFiguritas[],int sizeDeLista,eEquipo listaDeEquipos[],int sizeEquipos,eLiga listaDeligas[],int sizeDeLigas,eAlbum* unAlbumDeFiguritas,eClubDeFutbol unClubDeFutbol);
 
-/// @fn int CargaForzada(eFiguritas[], int, eEquipo[], int, eClubDeFutbol[], int, eLiga[], int, int)
-/// @brief Permite cargar  le id una figurita de la lista de repetidas y devuelve el indice donde esta la figurita que se eligio
+/// @fn int InitList([], int,[], int, int)
+/// @brief Realiza una carga forzada en el array de figuritas y de Equipos
 ///
-/// @param maximo
-/// @return
+/// @return [-1] si no pudo realizar la carga forzada, [1]  si pudo realizar la carga forzada
 int CargaForzada(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEquipo listaDeEquipos[],int sizeEquipos,eClubDeFutbol listaDeClubs[],int sizeDeClubs,eLiga listaDeLigas[],int sizeDeLiga,int maximo);
 
-/// @fn int MostrarFiguritasRepetidasDeUnArray(int[], int, int[], int, eFiguritas[], int, eEquipo[], int, eClubDeFutbol[], int, eLiga[], int)
-/// @brief
-///
-/// @return
-int MostrarFiguritasRepetidasDeUnArray(int figuritas[],int size,int figuritasRepetidas[],int sizeDeRepetidas,eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEquipo listaDeEquipos[],int sizeDeEquipos,eClubDeFutbol listaDeClubs[],int sizeDeClubs,eLiga listaDeligas[],int sizeDeLigas);
-
 /// @fn int ContarFiguritasRepetidasDeUnArray(int[], int, int[], int, eFiguritas[], int)
-/// @brief
+/// @brief Cuenta cuntas figuritas repetidas hay en el array
 ///
-/// @param figuritas
-/// @param size
-/// @param figuritasRepetidas
-/// @param sizeDeRepetidas
-/// @param listaDeFiguritas
-/// @param sizeDeFiguritas
- /// @return  [-1] si hubo error en los parametos o si la lista esta vacia,[1] si esta ok
+ /// @return  [-1] si hubo error en los parametos o si la lista esta vacia,[la cantidad que conto] si esta ok
 int ContarFiguritasRepetidasDeUnArray(int figuritas[],int size,int figuritasRepetidas[],int sizeDeRepetidas,eFiguritas listaDeFiguritas[],int sizeDeFiguritas);
 
 /// @fn int CantidadDeFiguritasPegadasPorCadaLiga(eLiga[], int, eClubDeFutbol[], int, eFiguritas[], int, eAlbum*, eAuxiliar[], int)
-/// @brief
+/// @brief Cueta la cantidad de figuritas pegadas en el album por cada liga y las guarda en un array auxlira
 ///
-/// @return  [-1] si hubo error en los parametos o si la lista esta vacia,[1] si esta ok
+/// @return  [-1] si hubo error en los parametos o si la lista esta vacia,[la cantidad de que conto] si esta ok
 int CantidadDeFiguritasPegadasPorCadaLiga(eLiga listaDeLigas[],int sizeDeLigas,eClubDeFutbol listaDeClubs[],int sizeDeClubs,eFiguritas listaDeFiguritas[],int sizeDeLista,eAlbum*,eAuxiliar arrayAuxiliar[],int sizeAuxiliar);
 
 /// @fn int ContarFiguritasPegadasDeUnaLiga(eFiguritas[], int, eClubDeFutbol[], int, int[], int, int)
-/// @brief
+/// @brief   Cueta la cantidad de figuritas pegadas en el album de una liga
 ///
-/// @param idDeLiga
-/// @return  [-1] si hubo error en los parametos o si la lista esta vacia,[1] si esta ok
+/// @param int la liga que se va a contar
+/// @return  [-1] si hubo error en los parametos o si la lista esta vacia,[la cantidad de que conto] si esta ok
 int ContarFiguritasPegadasDeUnaLiga(eFiguritas listaDeFiguritas[],int sizeDeLista,eClubDeFutbol listaDeClubs[],int sizeDeClubs,int arrayDeFiguritas[],int sizeDeFiguritas,int idDeLiga);
 
-/// @fn int MostrarUnaFiguritaPegadaDeCadaLiga(eFiguritas[], int, eEquipo[], int, eClubDeFutbol[], int, eAlbum*, int)
-/// @brief
-/// @param idDeLiga
-/// @return
-int MostrarUnaFiguritaPegadaDeCadaLiga(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEquipo listaDeEquipos[], int sizeEquipos,eClubDeFutbol listaDeClubs[],int sizeDeClubs,eAlbum* unAlbumDeFiguritas,int idDeLiga);
+/// @fn int MostrarFiguritasPegadaDeCadaLiga(eFiguritas[], int, eEquipo[], int, eClubDeFutbol[], int, eAlbum*, int)
+/// @brief Muestra las figuritas pegadas en el album de una liga determinada
+/// @param int  la liga que se va mostrar
+/// @return  [-1] si hubo error en los parametos o si la lista esta vacia,[1] si esta ok
+int MostrarFiguritasPegadaDeCadaLiga(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEquipo listaDeEquipos[], int sizeEquipos,eClubDeFutbol listaDeClubs[],int sizeDeClubs,eAlbum* unAlbumDeFiguritas,int idDeLiga);
 
 /// @fn int MostrarUnaFiguritaPegadaDeUnaLiga(eFiguritas[], int, eEquipo[], int, eAlbum*, eClubDeFutbol)
-/// @brief
+/// @brief Muestra las figuritas pegadas en el Album de un club determinado
 ///
-/// @param listaDeFiguritas
-/// @param sizeDeLista
-/// @param listaDeEquipos
-/// @param sizeEquipos
-/// @param unAlbumDeFiguritas
-/// @param unClubDeFutbol
 /// @return  [-1] si hubo error en los parametos o si la lista esta vacia,[1] si esta ok
 int MostrarUnaFiguritaPegadaDeUnaLiga(eFiguritas listaDeFiguritas[],int sizeDeLista,eEquipo listaDeEquipos[],int sizeEquipos,eAlbum* unAlbumDeFiguritas,eClubDeFutbol unClubDeFutbol);
 
 /// @fn int MostrarLigasConMayorCantidad(eFiguritas[], int, eEquipo[], int, eAlbum*, eClubDeFutbol[], int, eLiga[], int, eAuxiliar[], int, int)
-/// @brief
+/// @brief Muestra la liga/s con mayor cantidad de figuritas pegadas en el album , con sus figuritas
 ///
-/// @param arrayAuxiliar
-/// @param sizeAuxiliar
-/// @param maximo
+/// @param eAuxiliar[] el array auxiliar
+/// @param int el tamanio del array auxiliar
+/// @param int la mayor cantidad de figuritas contadas
 /// @return  [-1] si hubo error en los parametos o si la lista esta vacia,[1] si esta ok
 int MostrarLigasConMayorCantidad(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEquipo listaDeEquipos[],int sizeEquipos,eAlbum* unAlbumDeFiguritas,eClubDeFutbol listaDeClubs[],int sizeDeClubs,eLiga listaDeLigas[],int sizeDeLigas,eAuxiliar arrayAuxiliar[],int sizeAuxiliar,int maximo);
 
@@ -195,18 +161,18 @@ int MostrarLigasConMayorCantidad(eFiguritas listaDeFiguritas[],int sizeDeFigurit
 int OrdenarListaDeFigutasPorEquipo(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEquipo listaDeEquipo[],int sizeDeEquipo,eClubDeFutbol listaDeClubs[],int sizeDeClubs,eLiga listaDeLigas[],int sizeDeLigas);
 
 /// @fn int MostrarListaDeFiguritasDeUnEquipo(eFiguritas[], int, eEquipo, eClubDeFutbol[], int, eLiga[], int)
-/// @brief
+/// @brief Muestra la lista de figuritas de un equipo determinado
 ///
 /// @return  [-1] si hubo error en los parametos o si la lista esta vacia,[1] si esta ok
 int MostrarListaDeFiguritasDeUnEquipo(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEquipo unEquipo,eClubDeFutbol listaDeClubs[],int sizeDeClubs,eLiga listaDeLigas[],int sizeDeLigas);
 
 /// @fn int PedirIdDeFigurita(eFiguritas[], int, eEquipo[], int, eClubDeFutbol[], int, eLiga[], int, char[], char[], int)
-/// @brief
+/// @brief Permite pedir un id una figurita y devueve el indice donde se encuentra la figurita elegida
 ///
 ///  @param char[] el mensaje que indica que debe ingresar
 /// @param char[] el mensaje que indica que debe ingresar un numero dentro del rango pedido
 ///  @param int la cantidad de reitentos
-/// @return[-1] si hubo error en los parametros ,[1] si esta ok
+/// @return[-1] si hubo error en los parametros o no se ingreso correctamente,[INDICE] si esta ok
 int PedirIdDeFigurita(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEquipo listaDeEquipos[],int sizeEquipos,eClubDeFutbol listaDeClubs[],int sizeDeClubs,eLiga listaDeLigas[],int sizeDeLigas,char mensaje[],char mensajeError[],int reitentos);
 
 /// @fn int MostrarFiguritasDeUnArray(int[], int, eFiguritas[], int, eEquipo[], int, eClubDeFutbol[], int, eLiga[], int)

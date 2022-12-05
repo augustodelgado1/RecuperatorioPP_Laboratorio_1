@@ -277,7 +277,7 @@ int MostrarLigasConMayorCantidad(eFiguritas listaDeFiguritas[],int sizeDeFigurit
 			    printf("%4d | %-15s  | %-15d |\n",listaDeLigas[indexLiga].idDeLiga,listaDeLigas[indexLiga].descripsion,arrayAuxiliar[i].contador);
 				MostrarUnMensajeRepetidasVeces("-", 60);
 				printf("\n");
-				MostrarUnaFiguritaPegadaDeCadaLiga(listaDeFiguritas,sizeDeFiguritas,listaDeEquipos,sizeEquipos,listaDeClubs,sizeDeClubs,unAlbumDeFiguritas,listaDeClubs[indexLiga].idDeLiga);
+				MostrarFiguritasPegadaDeCadaLiga(listaDeFiguritas,sizeDeFiguritas,listaDeEquipos,sizeEquipos,listaDeClubs,sizeDeClubs,unAlbumDeFiguritas,listaDeClubs[indexLiga].idDeLiga);
 			}
 		}
 		estado = OK;
@@ -286,7 +286,7 @@ int MostrarLigasConMayorCantidad(eFiguritas listaDeFiguritas[],int sizeDeFigurit
     return estado;
 }
 
-int MostrarUnaFiguritaPegadaDeCadaLiga(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEquipo listaDeEquipos[],int sizeEquipos,eClubDeFutbol listaDeClubs[],int sizeDeClubs,eAlbum* unAlbumDeFiguritas,int idDeLiga)
+int MostrarFiguritasPegadaDeCadaLiga(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEquipo listaDeEquipos[],int sizeEquipos,eClubDeFutbol listaDeClubs[],int sizeDeClubs,eAlbum* unAlbumDeFiguritas,int idDeLiga)
 {
 	int estado;
 	estado = ERROR;
