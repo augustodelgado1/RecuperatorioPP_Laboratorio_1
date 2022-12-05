@@ -108,6 +108,7 @@ int SubMenuDeListados(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEquipo 
 						break;
 
 	                case 8:
+//	                	Informar Porcentaje de Clubs por cada figurita pegada en el Album
 	                	if(InicializarListaAuxiliar(arrayAuxiliar, MAX_AUXILIAR) != ERROR &&
 	                	CantidadDeFiguritasPegadasPorCadaClubs(listaDeClubs, sizeDeClubs, listaDeFiguritas, sizeDeFiguritas,unAlbumDeFiguritas, arrayAuxiliar, MAX_AUXILIAR)  != ERROR &&
 	                	CalcularPorcentajeArrayAuxiliar(arrayAuxiliar, MAX_AUXILIAR, CantidadDeClubsCargados(listaDeClubs, sizeDeClubs)) != ERROR)
@@ -119,6 +120,7 @@ int SubMenuDeListados(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEquipo 
 	                	break;
 
 	                case 9:
+//	                	Determinar cual/cuales son las ligas que mayor cantidad de figuritas pegadas en el Album
 	                	if(InicializarListaAuxiliar(arrayAuxiliar, MAX_AUXILIAR) != ERROR
 	                	&& CantidadDeFiguritasPegadasPorCadaLiga(listaDeligas,sizeDeLigas,listaDeClubs,sizeDeClubs,listaDeFiguritas,sizeDeFiguritas,unAlbumDeFiguritas, arrayAuxiliar,MAX_AUXILIAR) != ERROR
 						&& BuscarMayorCantidad(arrayAuxiliar,MAX_AUXILIAR,&maximo) != ERROR)
@@ -167,7 +169,7 @@ int SubmenuColeccionista(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEqui
 
 		do{
 
-																			 menu("Menu Principal",
+																			 menu("Menu Coleccionista",
 																				  "\n1.Comprar un paquete de figuritas\n"
 																				  "2.Intercambiar figuritas\n"
 																				  "3.Informes\n"
@@ -189,7 +191,7 @@ int SubmenuColeccionista(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEqui
 							{
 								MostrarListaDeRepetidas(arrayDeFiguritas,MAX_FIGURITAS,listaDeFiguritas,sizeDeFiguritas,listaDeEquipos,sizeEquipos,listaDeClubs,sizeDeClubs,listaDeligas,sizeDeLigas);
 								unColeccionista->cantidadDeSobres++;
-								cantidadDeFiguritas += ContarFiguritasDeUnArray(arrayDeFiguritas, MAX_FIGURITAS, listaDeFiguritas, sizeDeFiguritas);
+								cantidadDeFiguritas += 5;
 								unColeccionista->cantidadDeDineroGastado += 170;
 
 								if(EstadoDelAlbum(listaDeFiguritas, sizeDeFiguritas, unAlbumDeFiguritas) != OCUPADO)
@@ -286,7 +288,8 @@ int MostrarLigasConMayorCantidad(eFiguritas listaDeFiguritas[],int sizeDeFigurit
     return estado;
 }
 
-int MostrarFiguritasPegadaDeCadaLiga(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEquipo listaDeEquipos[],int sizeEquipos,eClubDeFutbol listaDeClubs[],int sizeDeClubs,eAlbum* unAlbumDeFiguritas,int idDeLiga)
+int MostrarFiguritasPegadaDeCadaLiga(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,eEquipo listaDeEquipos[],int sizeEquipos,
+		eClubDeFutbol listaDeClubs[],int sizeDeClubs,eAlbum* unAlbumDeFiguritas,int idDeLiga)
 {
 	int estado;
 	estado = ERROR;
@@ -299,7 +302,8 @@ int MostrarFiguritasPegadaDeCadaLiga(eFiguritas listaDeFiguritas[],int sizeDeFig
 
 						if(listaDeClubs[i].estado == OCUPADO && listaDeClubs[i].idDeLiga == idDeLiga)
 						{
-							MostrarUnaFiguritaPegadaDeUnaLiga(listaDeFiguritas,sizeDeFiguritas,listaDeEquipos,sizeEquipos,unAlbumDeFiguritas,listaDeClubs[i]);
+							MostrarUnaFiguritaPegadaDeUnaLiga(listaDeFiguritas,
+									sizeDeFiguritas,listaDeEquipos,sizeEquipos,unAlbumDeFiguritas,listaDeClubs[i]);
 						}
 					}
 				}
@@ -381,8 +385,7 @@ int ContarFiguritasPegadasDeUnaLiga(eFiguritas listaDeFiguritas[],int sizeDeList
 
 				for (int i = 0; i <sizeDeClubs; i++) {
 
-					if(listaDeClubs[i].estado == OCUPADO
-					&& listaDeClubs[i].idDeLiga == idDeLiga)
+					if(listaDeClubs[i].estado == OCUPADO && listaDeClubs[i].idDeLiga == idDeLiga)
 					{
 						acumulador += ContarFiguritasPegadasDeUnClub(listaDeFiguritas, sizeDeLista, arrayDeFiguritas, sizeDeFiguritas, listaDeClubs[i].idDeClub);
 					}
@@ -507,7 +510,8 @@ int AbrirSobre(eFiguritas listaDeFiguritas[],int size,int arrayDeFiguritas[],int
     index = ERROR;
     contadorDeFiguritas = CantidadDeFiguritasCargadas(listaDeFiguritas,size);
 
-    if(size >= 0 && contadorDeFiguritas > 0 && contadorDeFiguritas >= cantidadDeFiguritas && BuscarIdMinimo(listaDeFiguritas, size,&idMinimo) != ERROR)
+    if(size >= 0 && contadorDeFiguritas > 0 &&
+    BuscarIdMinimo(listaDeFiguritas, size,&idMinimo) != ERROR && cantidadDeFiguritas <= sizeDeFiguritas)
     {
         for (int i = 0; i <cantidadDeFiguritas; i++) {
         	id = idMinimo + (rand() %contadorDeFiguritas);
@@ -542,8 +546,8 @@ int MostrarListaDeRepetidas(int listaDeRepetidas[],int sizeDeRepetidas,eFigurita
         for (int i = 0; i <sizeDeFiguritas; i++) {
 
             cantidad = ContarRepetidas(listaDeRepetidas,sizeDeRepetidas,listaDeFiguritas[i].IdFigurita);
-            indexDeEquipo = BuscarIdDeEquipo(listaDeEquipos, sizeEquipos, listaDeFiguritas[i].idEquipo);
             indexRepetida = BuscarIdEnElArray(listaDeRepetidas, sizeDeRepetidas, listaDeFiguritas[i].IdFigurita);
+            indexDeEquipo = BuscarIdDeEquipo(listaDeEquipos, sizeEquipos, listaDeFiguritas[i].idEquipo);
             indexDeClub = BuscarPorIdDeClubDeFutbol(listaDeClubs, sizeDeClubs, listaDeFiguritas[i].idDeClub);
             indexDeLiga = BuscarPorIdDeLiga(listaDeLigas, sizeDeLigas, listaDeClubs[indexDeClub].idDeLiga);
 
@@ -848,13 +852,12 @@ int ListarFiguritasGuardadasDeUnEquipo(eEquipo unEquipo,eFiguritas listaDeFiguri
 			indexDeClub = BuscarPorIdDeClubDeFutbol(listaDeClubs, sizeDeClubs, listaDeFiguritas[indexDeFigurita].idDeClub);
 			indexDeLigas = BuscarPorIdDeLiga(listaDeLigas, sizeDeLigas,listaDeClubs[indexDeClub].idDeLiga);
 
-			if(indexDeFigurita != ERROR && indexDeLigas != ERROR && indexDeClub != ERROR && listaDeFiguritas[indexDeFigurita].estado == OCUPADO && listaDeFiguritas[indexDeFigurita].idEquipo == unEquipo.idEquipo)
+			if(indexDeFigurita != ERROR && indexDeLigas != ERROR && indexDeClub != ERROR &&
+			listaDeFiguritas[indexDeFigurita].estado == OCUPADO && listaDeFiguritas[indexDeFigurita].idEquipo == unEquipo.idEquipo)
 			{
 				MostrarUnaFigurita(listaDeFiguritas[i], unEquipo, listaDeClubs[indexDeClub], listaDeLigas[indexDeLigas]);
 			}
-
 		}
-
 	}
 
 	return estado;
@@ -865,6 +868,7 @@ int CantidadDeFiguritasGuardadasDeUnEquipo(eEquipo unEquipo,eFiguritas listaDeFi
 	int indexDeFigurita;
 	int cantidad;
 	cantidad = ERROR;
+
 	if(CantidadDeFiguritasCargadas(listaDeFiguritas, sizeDeFiguritas) > 0 &&
 	ContarFiguritasDeUnArray(arrayDeFiguritas, sizeDeArray, listaDeFiguritas, sizeDeFiguritas) > 0)
 	{
@@ -873,13 +877,12 @@ int CantidadDeFiguritasGuardadasDeUnEquipo(eEquipo unEquipo,eFiguritas listaDeFi
 
 			indexDeFigurita = BuscarPorIdDeFigurita(listaDeFiguritas, sizeDeFiguritas, arrayDeFiguritas[i]);
 
-			if(indexDeFigurita != ERROR && listaDeFiguritas[indexDeFigurita].estado == OCUPADO && listaDeFiguritas[indexDeFigurita].idEquipo == unEquipo.idEquipo)
+			if(indexDeFigurita != ERROR && listaDeFiguritas[indexDeFigurita].estado == OCUPADO
+			&& listaDeFiguritas[indexDeFigurita].idEquipo == unEquipo.idEquipo)
 			{
 				cantidad++;
 			}
-
 		}
-
 	}
 
 	return cantidad;

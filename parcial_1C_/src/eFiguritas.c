@@ -55,7 +55,6 @@ int SubMenuAdministrador(eFiguritas listaDeFiguritas[],int size,eEquipo listaDeE
 	                    break;
 
 	                case 3:
-
 	                    if(CantidadDeFiguritasCargadas(listaDeFiguritas, size) > 0)
 	        			{
 							if(OrdenarListaDeEquiposAlfeveticamente(listaDeEquipos,sizeDeEquipos) == ERROR

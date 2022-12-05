@@ -8,7 +8,7 @@
 
 
 /// @fn int MostrarListaDeclub([], int)
-/// @brief Muestra la lista de club
+/// @brief Muestra la lista de clubes de futbol con su liga
 ///
 /// @param eLiga[] la lista De club
 /// @param int el tamanio de la lista de club
@@ -51,7 +51,7 @@ int CargaForzadaDeClub(eClubDeFutbol listaDeClubs[],int sizeDeClubs,int idDeClub
 /// @return  [-1] si no encontro espacio , [el indice]  donde encontro el espacio
 int BuscarLibreClub(eClubDeFutbol listaDeClubs[],int sizeDeClubs);
 
-/// @fn int PedirEquipos([], int)
+/// @fn int PedirUnClub([], int)
 /// @brief Permite pedir una liga validando que se ingres un equipo que pertenesca a la lista
 ///
 /// @param eLiga[] la lista De club
