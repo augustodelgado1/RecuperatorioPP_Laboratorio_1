@@ -38,8 +38,6 @@ int BuscarMayorCantidad(eAuxiliar arrayAuxiliar[],int sizeAuxiliar,int* maximo);
 /// @param int el tamanio del array
 /// @return [-1] si no encontro el espacio libre , el indice donde lo encontro
 int BuscarLibreAuxiliar(eAuxiliar arrayAuxiliar[],int sizeAuxiliar);
-int BuscarIdDeArrayAuxiliar(eAuxiliar arrayAuxiliar[],int sizeAuxiliar,int id);
-
 
 /// @fn int CalcularPorcentajeArrayAuxiliar(eAuxiliar[], int, int)
 /// @brief Calcula el porcentaje de la cantidad contada

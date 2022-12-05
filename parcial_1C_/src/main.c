@@ -31,7 +31,7 @@ int main(void) {
 																		  "\n[2].Menu De Coleccionista"
 																		  "\n[3].Carga Forzada"
 																		  "\n[4].Salir");
-						   retorno = GetNumero(&opcion, "Ingrese Una opcion: ","ingrese Una opcion valida: ",1, 5, 2);
+						   retorno = GetNumero(&opcion, "Ingrese Una opcion: ","ingrese Una opcion valida: ",1, 4, 2);
 						   if(retorno != ERROR){
 
 							switch(opcion){

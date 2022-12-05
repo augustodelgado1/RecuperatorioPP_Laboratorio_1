@@ -68,25 +68,6 @@ int CalcularPorcentajeArrayAuxiliar(eAuxiliar arrayAuxiliar[],int sizeAuxiliar,i
 	return estado;
 }
 
-int BuscarIdDeArrayAuxiliar(eAuxiliar arrayAuxiliar[],int sizeAuxiliar,int id)
-{
-	int index;
-	index = ERROR;
-
-	 if(arrayAuxiliar != NULL && sizeAuxiliar >= 0 && id >= 0)
-	    {
-	        for (int i = 0; i <sizeAuxiliar; i++) {
-
-	          if(arrayAuxiliar[i].estado == OCUPADO && arrayAuxiliar[i].id == id)
-	          {
-	               index = i;
-	          }
-	        }
-	    }
-
-	 return index;
-}
-
 int BuscarMayorCantidad(eAuxiliar arrayAuxiliar[],int sizeAuxiliar,int* maximo)
 {
     int estado;

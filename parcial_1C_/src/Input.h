@@ -6,8 +6,6 @@
 
 #include "Validations.h"
 
-
-int GetEnteroCorto(short* numero,char mensaje[],char mensajeError[] ,int minimo,int maximo,int reitentos);
 /// @fn float PedirFlotanteYValidar(char[], char[], int)
 /// @brief Permite ingresar un numero flotante y valida el  minimo de rango
 ///

@@ -5,19 +5,20 @@
 
 #include "eFiguritas.h"
 
-/// @fn void eEquipo_MostraLista([], int)
+/// @fn int MostrarListaDeEquipos([], int)
 /// @brief Muestra la lista de equipos
 ///
 /// @param eEquipo[] la lista De equipos
 /// @param int el tamanio de la lista de equipos
+/// @return [-1] si hubo error en los parametros o si la lista esta vacia,[1] si esta ok
 int MostrarListaDeEquipos(eEquipo[],int );
 
 /// @fn int InicializarListaDeEquipos(eEquipo[], int)
-/// @brief
+/// @brief Inicializa la lista de equipos
 ///
 /// @param eEquipo[] la lista De equipos
 /// @param int el tamanio de la lista de equipos
-/// @return
+/// @return [-1] si hubo error en los parametros ,[1] si esta ok
 int InicializarListaDeEquipos(eEquipo listaDeEquipos[],int sizeEquipos);
 
 /// @fn int CantidadDeEquiposCargados(eEquipo[], int)
@@ -25,54 +26,55 @@ int InicializarListaDeEquipos(eEquipo listaDeEquipos[],int sizeEquipos);
 ///
 /// @param eEquipo[] la lista De equipos
 /// @param int el tamanio de la lista de equipos
-/// @return [-1] si h
+/// @return [-1] si hubo error en los parametros ,[la cantidad que conto] si esta ok
 int CantidadDeEquiposCargados(eEquipo listaDeEquipos[],int sizeEquipos);
 
 
 /// @fn int CargaForzadaDeEquipo(eEquipo[], int, int, char[], char[])
-/// @brief Ca
+/// @brief  Permite cargar un equipo validando que los datos a guardar sea validos
 ///
 /// @param eEquipo[] la lista De equipos
 /// @param int el tamanio de la lista de equipos
-/// @param int
-/// @param char directorTecnico
-/// @param char descripcion
-/// @return
+/// @param int id de equipo
+/// @param char[] directorTecnico
+/// @param char[] descripcion
+/// @return [-1] si hubo error en los parametros ,[1] si esta ok
 int CargaForzadaDeEquipo(eEquipo listaDeEquipos[],int sizeEquipos,int idEquipo,char directorTecnico[],char descripcion[]);
 
 /// @fn int OrdenarEquipo([], int)
 /// @brief Ordena alfaveticamente de manera acsendete la lista de equipos
 ///
-/// @param eEquipo
-/// @param
-/// @return[-1] si hubo error ,[1] si no hubo error
+/// @param eEquipo[] la lista De equipos
+/// @param int el tamanio de la lista de equipos
+/// @return[-1] si hubo error en los parametros,[1] si esta ok
 int OrdenarListaDeEquiposAlfeveticamente(eEquipo[],int );
 
 /// @fn int BuscarIdDeEquipo([], int, int)
-/// @brief Busca la primera concidencia con el id pasado por parametro
-/// y devuelve el indice
+/// @brief Busca la primera concidencia con el id pasado por parametro y devuelve el indice
 ///
-/// @param eEquipo
-/// @param
-/// @param
+/// @param eEquipo[] la lista De equipos
+/// @param int el tamanio de la lista de equipos
+/// @param int id A buscar
 /// @return [-1] si no encontro coicidencia , [el indice]  donde encontro la coicidencia
 int BuscarIdDeEquipo(eEquipo listaDeEquipos[],int sizeDeEquipos,int id);
 
 /// @fn int BuscarEquipoLibre(eEquipo[], int)
-/// @brief
+/// @brief Busca un espacio libre en la lista de Equipos
 ///
-/// @param listaDeEquipos
-/// @param sizeEquipos
-/// @return
+/// @param eEquipo[] la lista De equipos
+/// @param int el tamanio de la lista de equipos
+/// @return  [-1] si no encontro espacio , [el indice]  donde encontro el espacio
 int BuscarEquipoLibre(eEquipo listaDeEquipos[],int sizeEquipos);
 
 /// @fn int PedirEquipos([], int)
-/// @brief Permite pedir un quipo validando que se ingres un equipo que
-/// pertenesca a la lista
+/// @brief Permite pedir un equipo validando que se ingres un equipo que pertenesca a la lista
 ///
-/// @param eEquipo
-/// @param
-/// @return[-1] si hubo error ,[1] si no hubo error
+/// @param eEquipo[] la lista De equipos
+/// @param int el tamanio de la lista de equipos
+///  @param char[] el mensaje que indica que debe ingresar
+/// @param char[] el mensaje que indica que debe ingresar un numero dentro del rango pedido
+///  @param int la cantidad de reitentos
+/// @return[-1] si hubo error ,[1] si esta ok
 int PedirEquipos(eEquipo[],int,char* mensaje,char* mensajeDeErrror,int reitentos );
 
 

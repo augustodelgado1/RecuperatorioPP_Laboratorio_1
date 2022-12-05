@@ -441,7 +441,7 @@ int ModificarUnaFigurita(eFiguritas listaDeFiguritas[], int size,eEquipo listaDe
     						    ImprimirCabecera("\n\t\t\t\t-- 	Figurita Actulizada	 --\n","ID  |   NOMBRE DE JUGADOR      |       POCISION       |       	  EQUIPO       	 | 		DIRECTOR TECNICO 	| 	ALTURA    |    PESO     |   ANIO DE INGRESO    |    FECHA DE NACIMIENTO      \n","=","-",200);
                         		MostrarUnaFiguritaCompleta(unaFigurita, listaDeEquipos, sizeDeEqipos, listaDeClubs, sizeDeClubs, listaDeLigas, sizeDeLigas);
 
-                        		retorno = ValidarChar(&respuesta,"¿Esta seguro que desea volver al menu principal? (s o n): ","Ingrese una opcion valida (s o n): ",'s' , 'n',2);
+                        		retorno = ValidarChar(&respuesta,"¿Esta seguro que desea  guadar los cambios? (s o n): ","Ingrese una opcion valida (s o n): ",'s' , 'n',2);
     						}
 						    break;
 					    }
