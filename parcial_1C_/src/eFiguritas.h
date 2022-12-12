@@ -64,7 +64,6 @@ typedef struct
 
 typedef struct
 {
-	int idDeAlbum;
 	int idFiguritasRepetidas[MAX_REPETIDAS];
     int cantidadDeSobres;
     float cantidadDeDineroGastado;
@@ -87,7 +86,6 @@ typedef struct
 
 typedef struct
 {
-	int idDeAlbum;
 	int idFigurita[MAX_FIGURITAS];// (int[])
 	int esDorada[MAX_DORADAS];// (int[])
 	int estado;
@@ -97,8 +95,8 @@ typedef struct
 /// @brief Permite cargar una figurita validando que los datos a guardar sea validos
 ///
 /// @return [-1] si hubo error en los parametros ,[1] si esta ok
-int CargarForzadaDeUnaFigurita(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,
-		int IdFigurita,char nombreJugador[],char posicion[],int idDeClub,int idEquipo,float altura, float peso, int anioIngresoAlaSeleccion,int  dia,int mes, int anio);
+int CargarForzadaDeUnaFigurita(eFiguritas listaDeFiguritas[],int sizeDeFiguritas,int IdFigurita,char nombreJugador[],char posicion[],int idDeClub,
+		int idEquipo,float altura, float peso, int anioIngresoAlaSeleccion,int  dia,int mes, int anio);
 
 /// @fn int Pedir_fecha(eFecha* unaFecha);
 /// @brief Permite pedir una fecha validando que se ingres una fecha valida
@@ -129,7 +127,8 @@ int PedirPosicion(char posicion[],int size);
 /// @param int el tamaño del array de eFiguritas
 /// @param eEquipo[] el array de eEquipo
 /// @param int el tamaño del array de eEquipo
-int SubMenuAdministrador(eFiguritas listaDeFiguritas[],int size,eEquipo listaDeEquipos[],int sizeDeEquipos,eClubDeFutbol[],int,eLiga[],int);
+int SubMenuAdministrador(eFiguritas listaDeFiguritas[],int size,eEquipo listaDeEquipos[],int sizeDeEquipos,
+		eClubDeFutbol listaDeClubs[],int sizeDeClubs,eLiga listaDeLigas[],int sizeDeLigas);
 
 /// @fn int InicializarLista(eFiguritas[], int)
 /// @brief Inicializa la lista de figuritas
@@ -184,7 +183,8 @@ int BuscarPorIdDeFigurita(eFiguritas listaDeFiguritas[], int size,int id);
 /// @param eEquipo[] el array de Equipos
 /// @param  int el tamanio del array de Equipos
 /// @return [-2] si no hay espacio en el array ,[-1] si no se pudo ingresar correctamente todos los campos, [1] si esta ok
-int AltaDeFigurita(eFiguritas listaDeFiguritas[], int len,eEquipo listaDeEquipos[],int sizeDeEquipos,eClubDeFutbol[],int,eLiga[],int);
+int AltaDeFigurita(eFiguritas listaDeFiguritas[], int sizeDeFiguritas,eEquipo listaDeEquipos[],int sizeDeEquipos,
+		eClubDeFutbol listaDeClubs[],int sizeDeClubs,eLiga listaDeLigas[],int sizeDeLigas);
 
 /// @fn int PedirUnaFigurita(eFiguritas*, eEquipo[], int)
 /// @brief Permite pedir una figurita validadndo que se ingrese todos los parametros correctamente
@@ -193,7 +193,8 @@ int AltaDeFigurita(eFiguritas listaDeFiguritas[], int len,eEquipo listaDeEquipos
 /// @param eEquipo[] el array de Equipos
 /// @param  int el tamanio del array de Equipos
 /// @return [-1] si no se pudo ingresar correctamente , [1] si se ingreso correctamente
-int PedirUnaFigurita(eFiguritas* unaFigurita,eEquipo listaDeEquipos[],int sizeDeEqipos,eClubDeFutbol listaDeClubs[],int sizeDeClubs,eLiga listaDeLigas[],int sizeDeLigas);
+int PedirUnaFigurita(eFiguritas* unaFigurita,eEquipo listaDeEquipos[],int sizeDeEqipos,
+		eClubDeFutbol listaDeClubs[],int sizeDeClubs,eLiga listaDeLigas[],int sizeDeLigas);
 
 
 /// @fn int MostraLista(eFiguritas[], int, eEquipo[], int)
@@ -211,14 +212,14 @@ int MostraListaDeFiguritas(eFiguritas listaDeFiguritas[],int size,eEquipo listaD
 ///
 /// @param eFiguritas[] el array de figuritas
 /// @param int el tamanio del array de figuritas
-/// @param int  [1] ordenar de forma ascendente , ordenar de forma decendente
+/// @param int  [1] ordenar de forma ascendente , [0] ordenar de forma decendente
 /// @return [-1] si hubo error en los parametros , [1] esta ok
 int OrdenarListaDeFiguritasPorId(eFiguritas listaDeFiguritas[],int size,int order);
 
 /// @fn void MostrarUnaFigurita(eFiguritas unaFigurita,eEquipo unEquipo,eClubDeFutbol unClub,eLiga unaLiga);
 /// @brief Muestra Una figuritas
 ///
-void MostrarUnaFigurita(eFiguritas unaFigurita,eEquipo unEquipo,eClubDeFutbol unClub,eLiga unaLiga);
+void MostrarUnaFigurita(eFiguritas unaFigurita,eEquipo unEquipo,eClubDeFutbol unClub,eLiga unaLiga );
 
 /// @fn int ObtenerID()
 /// @brief Permite obtener el id de forma automatica

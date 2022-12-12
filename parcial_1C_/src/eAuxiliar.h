@@ -48,5 +48,14 @@ int BuscarLibreAuxiliar(eAuxiliar arrayAuxiliar[],int sizeAuxiliar);
 /// @return [-1] si hubo error en los parametros ,  [1] si esta OK
 int CalcularPorcentajeArrayAuxiliar(eAuxiliar arrayAuxiliar[],int sizeAuxiliar,int cantidad);
 
+/// @fn int OrdenarContadorDeArrayAuxiliar(eAuxiliar[], int, int)
+/// @brief Ordena el array Auxiliar de forma descendente o ascendente
+///
+/// @param eAuxiliar[] el array de auxiliar
+/// @param int el tamanio del array
+/// @param int  [1] ordenar de forma ascendente , [0] ordenar de forma decendente
+/// @return [-1] si hubo error en los parametros ,  [1] si esta OK
+int OrdenarContadorDeArrayAuxiliar(eAuxiliar arrayAuxiliar[],int sizeAuxiliar,int order);
+
 
 #endif

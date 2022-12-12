@@ -109,3 +109,33 @@ int BuscarMayorAcumulado(eAuxiliar arrayAuxiliar[],int sizeAuxiliar,int* maximo)
     return estado;
 
 }
+
+int OrdenarContadorDeArrayAuxiliar(eAuxiliar arrayAuxiliar[],int sizeAuxiliar,int order)
+{
+	int estado;
+	eAuxiliar auxiliar;
+	 estado = ERROR;
+
+	if(sizeAuxiliar > 0 && (order == 1 || order == 0))
+	{
+		 for (int i = 0; i <sizeAuxiliar-1; i++)
+		{
+			 for (int j = i+1; j < sizeAuxiliar; j++) {
+
+				 if((arrayAuxiliar[i].contador > arrayAuxiliar[j].contador && order == 1)
+				 || (arrayAuxiliar[i].contador < arrayAuxiliar[j].contador && order == 0))
+				 {
+					 auxiliar = arrayAuxiliar[i];
+					 arrayAuxiliar[i] = arrayAuxiliar[j];
+					 arrayAuxiliar[j] = auxiliar;
+				 }
+
+			}
+
+		}
+		        estado = OK;
+	}
+
+	  return estado;
+
+}

@@ -65,7 +65,6 @@ int GuardarFiguritasRepetidas(int arrayDeRepetidas[],int sizeDeRepetidas,eFiguri
 					CargarUnaFiguritaRepetida(arrayDeRepetidas, sizeDeRepetidas, unAlbumDeFiguritas, listaDeFigurita[index].IdFigurita);
 				}
 			}
-
 		}
 
 		return retorno;

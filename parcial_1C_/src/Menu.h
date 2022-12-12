@@ -3,7 +3,7 @@
  * @brief  Esta bibloteca contiene las opciones del menu y
  *
  * @Autor : Augusto Delgado
- * @Division B
+ * @Division C
  */
 
 #ifndef MENU_H_
@@ -22,9 +22,23 @@
 /// @return si se ingreso la opcion correctamente
 void menu(char mensajeDeBienvenida[],char mensaje[]);
 
-
+/// @fn int ImprimirCabecera(char*)
+/// @brief Mustra un mensaje con una cabecera
+///
+/// @param char[] el Mensaje que indica que se va a mostrar
+/// @param char[] el mensaje indicando los datos
+/// @param char[] el mensaje a mostrar
+/// @param char[] el mensaje a mostrar
+/// @param int la cantidad de veces que se quiere mostrar el mensaje 2 y tres
+/// @return [-1] si hubo ERROR en los parametros, [1] SI ESTA OK
 int ImprimirCabecera(char cabecera[],char mensaje[],char segundoMensaje[],char tercerMensaje[],int cantidadDeVeces);
 
+/// @fn int MostrarUnMensajeRepetidasVeces(char[], int)
+/// @brief Mostra un mensje determinada cantidad veces
+///
+/// @param char[] el mensaje a mostrar
+/// @param int la cantidad de veces que se quiere mostrar el mensaje
+/// @return [-1] si hubo ERROR en los parametros, [1] SI ESTA OK
 int MostrarUnMensajeRepetidasVeces(char mensaje[],int cantidadDeVeces);
 
 

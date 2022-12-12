@@ -36,7 +36,7 @@ int SubMenuAdministrador(eFiguritas listaDeFiguritas[],int size,eEquipo listaDeE
 	                    break;
 
 	                case 2:
-	                    if(OrdenarListaDeFiguritasPorId(listaDeFiguritas,size,1) != ERROR)
+	                    if(CantidadDeFiguritasCargadas(listaDeFiguritas, size) > 0)
 	        			{
 	                    	switch(ModificarUnaFigurita(listaDeFiguritas, size,listaDeEquipos,sizeDeEquipos,listaDeClubs,sizeDeClubs,listaDeLigas,sizeDeLigas)){
 									case 0:
@@ -58,7 +58,7 @@ int SubMenuAdministrador(eFiguritas listaDeFiguritas[],int size,eEquipo listaDeE
 	                    if(CantidadDeFiguritasCargadas(listaDeFiguritas, size) > 0)
 	        			{
 							if(OrdenarListaDeEquiposAlfeveticamente(listaDeEquipos,sizeDeEquipos) == ERROR
-							|| OrdenarListaDeFigutasPorEquipo(listaDeFiguritas, size,listaDeEquipos,sizeDeEquipos,listaDeClubs,sizeDeClubs,listaDeLigas,sizeDeLigas) == ERROR)
+							|| MostrarListaDeFigutasPorOrdenadaPorEquipo(listaDeFiguritas, size,listaDeEquipos,sizeDeEquipos,listaDeClubs,sizeDeClubs,listaDeLigas,sizeDeLigas) == ERROR)
 							{
 								printf("Hubo un Error al intentar Mostrar la lista de figuritas");
 							}
@@ -250,22 +250,20 @@ int AltaDeFigurita(eFiguritas listaDeFiguritas[], int sizeDeFiguritas,eEquipo li
 	int index;
 	int estado;
 	estado = -2;
-
 	index = BuscarFiguritaLibre(listaDeFiguritas,sizeDeFiguritas);
 
 	if(index != ERROR){
-
 	    estado = ERROR;
 
 	    if(PedirUnaFigurita(&listaDeFiguritas[index],listaDeEquipos,sizeDeEquipos,listaDeClubs,sizeDeClubs,listaDeLigas,sizeDeLigas) != ERROR)
 	    {
 	    	listaDeFiguritas[index].IdFigurita = ObtenerID();
-	        ImprimirCabecera("\n\t\t\t\t-- 	Nueva Figurita --\n","ID  |   NOMBRE DE JUGADOR      |       POCISION       |       	  EQUIPO       	 | 		DIRECTOR TECNICO 	| 	ALTURA    |    PESO     |   ANIO DE INGRESO    |    FECHA DE NACIMIENTO      \n","=","-",200);
+	    	ImprimirCabecera("\n\t\t\t\t-- 	Nueva Figurita --\n","ID  |   NOMBRE DE JUGADOR      |       POCISION       |       	  EQUIPO       	 |		 CLUB		    |			LIGA 	       |	 NACIONALIDAD 	       	   | 		DIRECTOR TECNICO 	 | 	ALTURA    |    PESO     |   ANIO DE INGRESO    |    FECHA DE NACIMIENTO      \n","=","-",300);
 	        MostrarUnaFiguritaCompleta(listaDeFiguritas[index], listaDeEquipos, sizeDeEquipos, listaDeClubs, sizeDeClubs, listaDeLigas, sizeDeLigas);
 	        estado = OK;
 	    }
-
 	}
+
 	return estado;
 }
 
@@ -275,7 +273,6 @@ int PedirUnaFigurita(eFiguritas* unaFigurita,eEquipo listaDeEquipos[],int sizeDe
 	    int estado;
 	    int indexEquipo;
 	    int indexDeClub;
-
 	    estado = ERROR;
 
 	if(unaFigurita != NULL){
@@ -310,11 +307,10 @@ int MostraListaDeFiguritas(eFiguritas listaDeFiguritas[],int size,eEquipo listaD
 
 	if(CantidadDeFiguritasCargadas(listaDeFiguritas, size) > 0)
 	{
-	    ImprimirCabecera("\n\t\t\t\t-- Lista De Figuritas	 --\n","ID  |   NOMBRE DE JUGADOR      |       POCISION       |       	  EQUIPO       	 | 		DIRECTOR TECNICO 	| 	ALTURA    |    PESO     |   ANIO DE INGRESO    |    FECHA DE NACIMIENTO      \n","=","-",200);
+	    ImprimirCabecera("\n\t\t\t\t-- Lista De Figuritas	 --\n","ID  |   NOMBRE DE JUGADOR      |       POCISION       |       	  EQUIPO       	 |		 CLUB		    |			LIGA 	       | 		DIRECTOR TECNICO 	 | 	ALTURA    |    PESO     |   ANIO DE INGRESO    |    FECHA DE NACIMIENTO      \n","=","-",300);
 		for (int i = 0;i<size;i++) {
 
 				 if(listaDeFiguritas[i].estado == OCUPADO){
-
 					 MostrarUnaFiguritaCompleta(listaDeFiguritas[i], listaDeEquipos, sizeDeEquipos, listaDeClubs, sizeDeClubs, listaDeLigas, sizeDeLigas) ;
 				 }
 		}
@@ -351,21 +347,18 @@ int ModificarUnaFigurita(eFiguritas listaDeFiguritas[], int size,eEquipo listaDe
 	int index;
 	int estado;
 	int opcion;
-	char respuesta;
 	int retorno;
-	eFiguritas unaFigurita;
-	int id;
 	int contadorDeCambios;
 	int indexEquipo;
 	int indexDeClub;
+	char respuesta;
+	eFiguritas unaFigurita;
 
-	MostraListaDeFiguritas(listaDeFiguritas, size,listaDeEquipos,sizeDeEqipos,listaDeClubs,sizeDeClubs,listaDeLigas,sizeDeLigas);
-	retorno = GetNumero(&id,"Ingrese el id que desea Modificar: ","Ingrese un id valido: ",1, 100000,2);
-    index = BuscarPorIdDeFigurita(listaDeFiguritas,size,id);
+	index = PedirIdDeFigurita(listaDeFiguritas, size, listaDeEquipos, sizeDeEqipos, listaDeClubs, sizeDeClubs, listaDeLigas, sizeDeLigas,"Ingrese el id que desea Modificar: ", "Ingrese un id valido: ", 2);
 	estado = ERROR;
-	contadorDeCambios =0;
+	contadorDeCambios = 0;
 
-		if(retorno != ERROR && index >= 0 && listaDeFiguritas[index].estado == OCUPADO){
+		if(index >= 0 && listaDeFiguritas[index].estado == OCUPADO){
 
 				unaFigurita = listaDeFiguritas[index];
 
@@ -450,7 +443,7 @@ int ModificarUnaFigurita(eFiguritas listaDeFiguritas[], int size,eEquipo listaDe
 					{
 					    printf("Se modifico exitosamente!!!!!!");
 					    ImprimirCabecera("\n\t\t\t\t-- 	Figurita Actualizada	 --\n","ID  |   NOMBRE DE JUGADOR      |       POCISION       |       	  EQUIPO       	 | 		DIRECTOR TECNICO 	| 	ALTURA    |    PESO     |   ANIO DE INGRESO    |    FECHA DE NACIMIENTO      \n","=","-",200);
-						MostrarUnaFiguritaCompleta(unaFigurita, listaDeEquipos, sizeDeEqipos, listaDeClubs, sizeDeClubs, listaDeLigas, sizeDeLigas);
+						MostrarUnaFiguritaCompleta(unaFigurita, listaDeEquipos, sizeDeEqipos,listaDeClubs, sizeDeClubs, listaDeLigas, sizeDeLigas);
 					    contadorDeCambios++;
 					}else{
 
@@ -484,7 +477,7 @@ int ModificarUnaFigurita(eFiguritas listaDeFiguritas[], int size,eEquipo listaDe
 
 void MostrarUnaFigurita(eFiguritas unaFigurita,eEquipo unEquipo,eClubDeFutbol unClub,eLiga unaLiga)
 {
-	printf("%-3d| %-24s | %-20s |%-25s | %-32s | %-25s | %-25s | %-12.2f | %-11.2f | %20d |  %d/%d/%d \n",unaFigurita.IdFigurita,
+	printf("%-3d| %-24s | %-20s |%-25s | %-32s | %-25s | %-35s | %-14.2f | %-11.2f | %20d |  %d/%d/%d \n",unaFigurita.IdFigurita,
 																																											     unaFigurita.nombreJugador,
 																																												unaFigurita.posicion,
 																																												unEquipo.descripcion,
@@ -497,7 +490,7 @@ void MostrarUnaFigurita(eFiguritas unaFigurita,eEquipo unEquipo,eClubDeFutbol un
 																																												unaFigurita.fechaNacimiento.dia,
 																																												unaFigurita.fechaNacimiento.mes,
 																																												unaFigurita.fechaNacimiento.anio);
-	MostrarUnMensajeRepetidasVeces("-", 200);
+	MostrarUnMensajeRepetidasVeces("-", 300);
 	printf("\n");
 }
 
@@ -544,14 +537,14 @@ int Pedir_fecha(eFecha* unaFecha){
 
     estado = ERROR;
 
-    if(GetNumero(&auxiliarDeFecha.dia,"ingrese el dia ","Error ingrese un dia valido ",1,31,3) == 0 &&
-       GetNumero(&auxiliarDeFecha.mes,"ingrese el mes ","Error ingrese un mes valido ",1,12,3) == 0 &&
-       GetNumero(&auxiliarDeFecha.anio,"ingrese el anio ","Error ingrese un anio valido ",1700,2023,3) == 0){
+    if(GetNumero(&auxiliarDeFecha.dia,"ingrese el dia de nacimiento del jugador: ","Error ingrese un dia valido ",1,31,3) == 0 &&
+       GetNumero(&auxiliarDeFecha.mes,"ingrese el mes de nacimiento del jugador: ","Error ingrese un mes valido ",1,12,3) == 0 &&
+       GetNumero(&auxiliarDeFecha.anio,"ingrese el anio de nacimiento del jugador: ","Error ingrese un anio valido ",1700,2023,3) == 0){
 
 
            while(ValidarFecha(auxiliarDeFecha.dia,auxiliarDeFecha.mes,auxiliarDeFecha.anio) == ERROR){
 
-            GetNumero(&auxiliarDeFecha.dia,"Ingrese Un dia Valido: ","Error ingrese un dia valido ",1,31,3);
+            GetNumero(&auxiliarDeFecha.dia,"Ingrese un dia valido: ","Error ingrese un dia valido: ",1,31,3);
             }
 
            *unaFecha= auxiliarDeFecha;
