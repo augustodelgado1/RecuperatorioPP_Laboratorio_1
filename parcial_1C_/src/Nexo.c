@@ -289,7 +289,7 @@ int MostrarLigasConMayorCantidad(eFiguritas listaDeFiguritas[],int sizeDeFigurit
 			    printf("%4d | %-15s  | %-15d |\n",listaDeLigas[indexLiga].idDeLiga,listaDeLigas[indexLiga].descripsion,arrayAuxiliar[i].contador);
 				MostrarUnMensajeRepetidasVeces("-", 77);
 				printf("\n");
-				MostrarFiguritasPegadaDeCadaLiga(listaDeFiguritas,sizeDeFiguritas,listaDeEquipos,sizeEquipos,listaDeClubs,sizeDeClubs,unAlbumDeFiguritas,listaDeClubs[indexLiga].idDeLiga);
+				MostrarFiguritasPegadaDeCadaLiga(listaDeFiguritas,sizeDeFiguritas,listaDeEquipos,sizeEquipos,listaDeClubs,sizeDeClubs,unAlbumDeFiguritas,listaDeLigas[indexLiga].idDeLiga);
 			}
 		}
 		estado = OK;

@@ -1,7 +1,8 @@
 
 #include "Nexo.h"
 
-int GuardarFiguritasDoradas(int arrayDeFiguritasDoradas[],int sizeDeDoradas,eFiguritas listaDeFigurita[],int sizeDeLista,int arrayDeFiguritas[],int sizeDeFiguritas,int cantidadDeFiguritas)
+int GuardarFiguritasDoradas(int arrayDeFiguritasDoradas[],int sizeDeDoradas,eFiguritas listaDeFigurita[],int sizeDeLista,int arrayDeFiguritas[],
+		int sizeDeFiguritas,int cantidadDeFiguritas)
 {
 	int estado;
 	int index;
